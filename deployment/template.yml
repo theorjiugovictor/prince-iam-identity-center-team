@@ -4,10 +4,10 @@ Parameters:
   Login:
     Type: String
     Description: IAM IDC Login URL
-  CloudTrailAuditLogs:
-    Type: "String"
-    AllowedPattern: "(read_write|read|write|none|arn.*)"
-    Description: Which events should be logged on the TEAM Application Cloudtrail Lake EventDataStore.  Acceptable values are "read","write","read_write", and "none".  You may also enter the arn of an existing Cloudtrail Lake EDS.
+  # CloudTrailAuditLogs:
+  #   Type: "String"
+  #   AllowedPattern: "(read_write|read|write|none|arn.*)"
+  #   Description: Which events should be logged on the TEAM Application Cloudtrail Lake EventDataStore.  Acceptable values are "read","write","read_write", and "none".  You may also enter the arn of an existing Cloudtrail Lake EDS.
   teamAdminGroup:
     Type: String
     Description: TEAM application Admin group
@@ -38,7 +38,7 @@ Parameters:
     Default: ''
 
 Conditions:
-  IsEmptyCloudTrailAuditLogs: !Equals [!Ref CloudTrailAuditLogs, ""]
+  # IsEmptyCloudTrailAuditLogs: !Equals [!Ref CloudTrailAuditLogs, ""]
   UseExternalRepo: !Equals [!Ref customRepository, 'Yes']
 
 Resources:
@@ -151,11 +151,11 @@ Resources:
           Value: !Ref Login
         - Name: TEAM_ACCOUNT
           Value: !Ref teamAccount
-        - Name: CLOUDTRAIL_AUDIT_LOGS
-          Value: !If
-            - IsEmptyCloudTrailAuditLogs
-            - "read_write"
-            - !Ref CloudTrailAuditLogs
+  # - Name: CLOUDTRAIL_AUDIT_LOGS
+  #   Value: !If
+  #     - IsEmptyCloudTrailAuditLogs
+  #     - "read_write"
+  #     - !Ref CloudTrailAuditLogs
         - Name: TEAM_ADMIN_GROUP
           Value: !Ref teamAdminGroup
         - Name: TEAM_AUDITOR_GROUP

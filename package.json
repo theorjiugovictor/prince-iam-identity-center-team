@@ -15,7 +15,7 @@
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.18.0",
     "aws-amplify": "^5.3.26",
-    "graphql-ttl-transformer": "^2.0.1",
+    "graphql-ttl-transformer": "^2.0.2",
     "hermes-engine": "0.11.0",
     "moment": "^2.29.1",
     "postcss-flexbugs-fixes": "^5.0.2",

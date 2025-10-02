@@ -38,7 +38,6 @@ if [ -z "$SECRET_NAME" ]; then
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           tags="$TAGS" \
@@ -51,7 +50,6 @@ if [ -z "$SECRET_NAME" ]; then
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           tags="$TAGS" \
@@ -65,10 +63,10 @@ if [ -z "$SECRET_NAME" ]; then
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           teamAccount="$TEAM_ACCOUNT" \
+           # CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           tags="$TAGS" \
           customAmplifyDomain="$UI_DOMAIN" \
         --no-fail-on-empty-changeset --capabilities CAPABILITY_NAMED_IAM
@@ -77,7 +75,7 @@ if [ -z "$SECRET_NAME" ]; then
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
+
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           teamAccount="$TEAM_ACCOUNT" \
@@ -92,7 +90,6 @@ else
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           tags="$TAGS" \
@@ -107,7 +104,6 @@ else
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           tags="$TAGS" \
@@ -123,7 +119,6 @@ else
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           teamAccount="$TEAM_ACCOUNT" \
@@ -137,7 +132,6 @@ else
         --stack-name TEAM-IDC-APP \
         --parameter-overrides \
           Login=$IDC_LOGIN_URL \
-          CloudTrailAuditLogs=$CLOUDTRAIL_AUDIT_LOGS \
           teamAdminGroup="$TEAM_ADMIN_GROUP" \
           teamAuditGroup="$TEAM_AUDITOR_GROUP" \
           teamAccount="$TEAM_ACCOUNT" \

@@ -1,0 +1,21 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-teamidcapp-prod-4ca27-authRole",
+      "UnauthRoleArn": "arn:aws:iam::282931679923:role/amplify-teamidcapp-prod-4ca27-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::282931679923:role/amplify-teamidcapp-prod-4ca27-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-teamidcapp-prod-4ca27-deployment",
+      "UnauthRoleName": "amplify-teamidcapp-prod-4ca27-unauthRole",
+      "StackName": "amplify-teamidcapp-prod-4ca27",
+      "StackId": "arn:aws:cloudformation:eu-west-1:282931679923:stack/amplify-teamidcapp-prod-4ca27/9746fe30-9f8e-11f0-8343-0a366dd1fd31",
+      "AmplifyAppId": "d31ywpuhzev087",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-teamidcapp-prod-4ca27-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "team06dbb7fc": {}
+      }
+    }
+  }
+}
