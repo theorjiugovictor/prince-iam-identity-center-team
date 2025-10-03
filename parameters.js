@@ -117,22 +117,6 @@ async function update_tag_parameters() {
 }
 
 
-async function update_cloudtrail_parameters() {
-  console.log(`updating amplify/backend/custom/cloudtrailLake/parameters.json"...`);
-
-  const cloudtrailParametersJsonPath = path.resolve(
-    `./amplify/backend/custom/cloudtrailLake/parameters.json`
-  );
-
-  const cloudtrailParametersJson = require(cloudtrailParametersJsonPath);
-
-  cloudtrailParametersJson.CloudTrailAuditLogs = CLOUDTRAIL_AUDIT_LOGS;
-  
-  fs.writeFileSync(
-    cloudtrailParametersJsonPath,
-    JSON.stringify(cloudtrailParametersJson, null, 4)
-  );
-}
 
 update_auth_parameters();
 update_react_parameters();

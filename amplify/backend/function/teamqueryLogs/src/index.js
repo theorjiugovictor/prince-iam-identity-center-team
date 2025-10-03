@@ -4,11 +4,7 @@
 //  Amazon Web Services, Inc. or Amazon Web Services EMEA SARL or both.
 const EventDataStore = (process.env.EVENT_DATA_STORE).split("/").pop();
 const REGION = process.env.REGION;
-const {
-    CloudTrailClient,
-    paginateGetQueryResults,
-  } = require("@aws-sdk/client-cloudtrail");
-  const client = new CloudTrailClient({ region: REGION });
+// CloudTrail logic removed
 
 
 const get_query = async (queryId) => {
@@ -19,7 +15,7 @@ try {
     QueryId: queryId,
     };
     const paginatorConfig = {
-    client: new CloudTrailClient({ region: REGION }),
+        // CloudTrail logic removed
     };
     const paginator = paginateGetQueryResults(paginatorConfig, input);
     for await (const page of paginator) {

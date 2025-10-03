@@ -15,24 +15,9 @@ import { SignatureV4 } from '@aws-sdk/signature-v4';
 import { HttpRequest } from '@aws-sdk/protocol-http';
 import { default as fetch, Request } from 'node-fetch';
 
-import {
-  CloudTrailClient,
-  StartQueryCommand,
-  DescribeQueryCommand,
-} from "@aws-sdk/client-cloudtrail"
-
 const { Sha256 } = crypto;
 const REGION = process.env.REGION;
-const EventDataStore = (process.env.EVENT_DATA_STORE).split("/").pop();
 const GRAPHQL_ENDPOINT = process.env.API_TEAM_GRAPHQLAPIENDPOINTOUTPUT;
-
-// const {
-//   CloudTrailClient,
-//   StartQueryCommand,
-//   DescribeQueryCommand,
-// } = require("@aws-sdk/client-cloudtrail");
-
-const client = new CloudTrailClient({ region: REGION });
 
 const query = /* GraphQL */ `
   mutation UpdateSessions(
@@ -119,52 +104,14 @@ const updateItem = async (id, queryId) => {
 };
 
 
-const get_query_status = async (queryId) => {
-  try {
-    const input = {
-      EventDataStore: EventDataStore,
-      QueryId: queryId,
-    };
-    const command = new DescribeQueryCommand(input);
-    const response = await client.send(command);
-    return response.QueryStatus;
-  } catch (err) {
-    console.log("Error", err);
-  }
-};
 
-const start_query = async (event) => {
-  const startTime = event["startTime"]["S"];
-  const endTime = event["endTime"]["S"];
-  const  username = event["username"]["S"].replace('idc_', '');
-  const accountId = event["accountId"]["S"];
-  const role = event["role"]["S"];
-  try {
-    const input = {
-      QueryStatement: `SELECT eventID, eventName, eventSource, eventTime FROM ${EventDataStore} WHERE eventTime > '${startTime}' AND eventTime < '${endTime}' AND lower(useridentity.principalId) LIKE '%:${username}%' AND useridentity.sessionContext.sessionIssuer.arn LIKE '%${role}%' AND recipientAccountId='${accountId}'`,
-    };
-    const command = new StartQueryCommand(input);
-    const response = await client.send(command);
-    return response.QueryId;
-  } catch (err) {
-    console.log("Error", err);
-  }
-};
+// CloudTrail logic removed. If you need to implement log query functionality, please use an alternative approach or service.
+
 
 export const handler = async (event) => {
-  let data = event["Records"].pop()
-  data = data["dynamodb"]["NewImage"]
-  const id = data["id"]["S"]
-  console.log("Event", data);
-  const queryId = await start_query(data);
-  let status = await get_query_status(queryId);
-  while (status) {
-    console.log(status);
-    status = await get_query_status(queryId);
-    if (status === "FINISHED") {
-      console.log("query Finished - queryId:", queryId );
-      const response = await updateItem (id, queryId);
-      return response;
-    }
-  }
+  // CloudTrail logic removed. Handler is now a stub.
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "CloudTrail logic removed from this Lambda." })
+  };
 };
