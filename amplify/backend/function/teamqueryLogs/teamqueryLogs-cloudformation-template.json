@@ -16,9 +16,6 @@
     "s3Key": {
       "Type": "String"
     },
-    "customcloudtrailLakeEventDataStoreOutput": {
-      "Type": "String"
-    }
   },
   "Conditions": {
     "ShouldNotCreateEnvResources": {
@@ -76,9 +73,6 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "EVENT_DATA_STORE": {
-              "Ref": "customcloudtrailLakeEventDataStoreOutput"
-            }
           }
         },
         "Role": {
