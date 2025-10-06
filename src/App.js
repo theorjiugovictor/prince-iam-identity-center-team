@@ -69,24 +69,14 @@ function App() {
     setData();
   }, []);
 
-  // The admin group ID for 'team-admin'. Replace with your actual admin group ID if different.
-  const ADMIN_GROUP_ID = "22351494-2041-7060-c113-3ad9821b27d4";
-
   function setData() {
     getUser().then((userData) => {
       setUser(userData);
       const payload = userData.signInUserSession.idToken.payload;
       setcognitoGroups(payload["cognito:groups"]);
       setUserId(payload.userId);
-      // Parse groupIds from the token (comma-separated, may have trailing comma)
-      const groupIds = (payload.groupIds || "").split(',').filter(Boolean);
-      setGroupIds(groupIds);
-      // Set groups to ["Admin"] if the admin group ID is present, else []
-      if (groupIds.includes(ADMIN_GROUP_ID)) {
-        setGroups(["Admin"]);
-      } else {
-        setGroups([]);
-      }
+      setGroupIds((payload.groupIds).split(','));
+      setGroups((payload.groups).split(','));
       setLoading(false);
     });
   }
